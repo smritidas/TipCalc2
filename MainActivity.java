@@ -13,7 +13,7 @@ import android.widget.TextView; // For displaying text
 import java.text.NumberFormat; // This is used for currency formatting
 
 /**
- * This is from the book Android 6 for programmers. By Deitel and Deitel. T
+ * This is from the book Android 6 for programmers. By Deitel and Deitel.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -121,6 +121,5 @@ public class MainActivity extends AppCompatActivity {
 }
 
 //TODO(1) The ux looks all wrong. Get the three textviews in line with each other.
-//TODO(2) The boxes are not on top of each other. Fix that.
+//TODO(2) Fix the enter amount box.
 //TODO(3) The seekbar breaks when the amount is anything but 15%.
-//TODO(4) The input only supports int.
