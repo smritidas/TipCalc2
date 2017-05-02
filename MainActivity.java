@@ -12,6 +12,9 @@ import android.widget.TextView; // For displaying text
 
 import java.text.NumberFormat; // This is used for currency formatting
 
+import static com.example.android.tipcalc2.R.id.amountEditText;
+import static com.example.android.tipcalc2.R.id.tipLabelTextView;
+
 /**
  * This is from the book Android 6 for programmers. By Deitel and Deitel.
  */
@@ -29,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView amountTextView; // The bill amount
     private TextView percentTextView; // The tip selected
     private TextView tipTextView; // How much the tip is
-    private TextView tipLabel18; //How much at 18%
-    private TextView tipAmount18; //The total cost @18%
     private TextView totalTextView; // Amount due
 
     @Override
@@ -42,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
         amountTextView = (TextView) findViewById(R.id.amountTextView);
         percentTextView = (TextView) findViewById(R.id.percentTextView);
         tipTextView = (TextView) findViewById(R.id.tipTextView);
-        tipLabel18 = (TextView) findViewById(R.id.tipLabelTextView18);
-        tipAmount18 = (TextView) findViewById(R.id.tipLabelTextViewAmt);
         totalTextView = (TextView) findViewById(R.id.totalTextView);
 
         // Update the GUI
@@ -77,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    percent = progress; //100.0
+                    percent = progress / 100;
+                    percentTextView.setText(percentFormat.format(percent));
                     calculate();// calculate and display tip and total
 
                 }
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     try { //get bill amount and display currency formatted value
-                        billAmount = Double.parseDouble(s.toString()) / 100.0;
+                        billAmount = Double.parseDouble(s.toString()) / 100;
                     } catch (NumberFormatException e) { // if s is empty or non-numeric
                         billAmount = 0.0;
                     }
@@ -123,6 +123,5 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
-//TODO(1) The ux looks all wrong. Get the three textviews in line with each other. NBD.
-//TODO(2) Fix the enter amount box.
-//TODO(3) The seekbar breaks when the amount is anything but 15%.
+//TODO(1) The seekbar breaks when the amount is anything but 15%.
+
