@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView amountTextView; // The bill amount
     private TextView percentTextView; // The tip selected
     private TextView tipTextView; // How much the tip is
+    private TextView tipLabel18; //How much at 18%
+    private TextView tipAmount18; //The total cost @18%
     private TextView totalTextView; // Amount due
 
     @Override
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         amountTextView = (TextView) findViewById(R.id.amountTextView);
         percentTextView = (TextView) findViewById(R.id.percentTextView);
         tipTextView = (TextView) findViewById(R.id.tipTextView);
+        tipLabel18 = (TextView) findViewById(R.id.tipLabelTextView18);
+        tipAmount18 = (TextView) findViewById(R.id.tipLabelTextViewAmt);
         totalTextView = (TextView) findViewById(R.id.totalTextView);
 
         // Update the GUI
@@ -97,12 +101,11 @@ public class MainActivity extends AppCompatActivity {
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     try { //get bill amount and display currency formatted value
                         billAmount = Double.parseDouble(s.toString()) / 100.0;
-                        amountTextView.setText(currencyFormat.format(billAmount));
                     } catch (NumberFormatException e) { // if s is empty or non-numeric
-                        amountTextView.setText("");
                         billAmount = 0.0;
                     }
-
+                    amountTextView.setText(currencyFormat.format(billAmount));
+                    amountTextView.setText("");
                     calculate(); // update the tip and total TextViews
                 }
 
@@ -120,6 +123,6 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
-//TODO(1) The ux looks all wrong. Get the three textviews in line with each other.
+//TODO(1) The ux looks all wrong. Get the three textviews in line with each other. NBD.
 //TODO(2) Fix the enter amount box.
 //TODO(3) The seekbar breaks when the amount is anything but 15%.
