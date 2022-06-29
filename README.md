@@ -1,3 +1,3 @@
 # TipCalc2
 
-Simple Android Tip Calculator. 
+Android Tip Calculator built using Java. 
